@@ -1,4 +1,5 @@
 import React from 'react';
+// import Button from 'react-bootstrap/Button';
 
 interface IRootState {
     inputCost: number;
@@ -41,7 +42,7 @@ class Root extends React.PureComponent<IRootProps, IRootState> {
 
     private addToList = () => {
         let newExpense = {
-            name: this.state.inputName,
+            name: this.state.inputName ? this.state.inputName : "untitled expense",
             date: new Date(),
             cost: this.state.inputCost,
             tags: []
@@ -71,8 +72,6 @@ class Root extends React.PureComponent<IRootProps, IRootState> {
                     onChange={this.changeName}
                 />
                 <button onClick={this.addToList}>Add item</button>
-                {/* {this.state.inputCost} */}
-                {/* {this.state.inputName} */}
                 {list}
             </div>
         );
