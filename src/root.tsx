@@ -15,7 +15,6 @@ class Root extends React.PureComponent<IRootProps, IRootState> {
 
     constructor(props: any){
         super(props);
-        console.log("root constructed")
         this.state = {
             inputCost: 0.01,
             inputName: "",
@@ -27,23 +26,17 @@ class Root extends React.PureComponent<IRootProps, IRootState> {
     }
 
     private changeCost = (event: any) => {
-        // this.setState({inputName});
         let inputCost = event.currentTarget.value;
-        console.log("TypeInput called with: ", inputCost);
         this.setState({
             inputCost: inputCost,
         });
-        console.log("typeInput set state to: ", this.state.inputCost);
     }
 
     private changeName = (event: any) => {
-        // this.setState({inputName});
         let inputName = event.currentTarget.value;
-        console.log("TypeInput called with: ", inputName);
         this.setState({
             inputName: inputName,
         });
-        console.log("typeInput set state to: ", this.state.inputName);
     }
 
     render(): JSX.Element {
@@ -53,7 +46,7 @@ class Root extends React.PureComponent<IRootProps, IRootState> {
 
         return (
             <div className="Root">
-                <h1>Dumb Shit 2019</h1>
+                <h1>Expense Tracker</h1>
                 $ <input type="number" min="0.01" step="0.01" max="2500" 
                     value={this.state.inputCost}
                     onChange={this.changeCost} 
