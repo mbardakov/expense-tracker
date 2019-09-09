@@ -39,9 +39,24 @@ class Root extends React.PureComponent<IRootProps, IRootState> {
         });
     }
 
+    private addToList = () => {
+        let newExpense = {
+            name: this.state.inputName,
+            date: new Date(),
+            cost: this.state.inputCost,
+            tags: []
+        }
+        this.setState({expenses: this.state.expenses.concat([newExpense])});
+    }
+
+    private parseDate = (date: Date) => {
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+        return `${months[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`; 
+    }
+
     render(): JSX.Element {
         let list = this.state.expenses.map((expense, index) => {
-            return <li key={index}>{expense.name}</li>
+            return <li key={index}>{this.parseDate(expense.date)}: {expense.name}: {expense.cost}</li>
         });
 
         return (
@@ -55,6 +70,7 @@ class Root extends React.PureComponent<IRootProps, IRootState> {
                     value={this.state.inputName}
                     onChange={this.changeName}
                 />
+                <button onClick={this.addToList}>Add item</button>
                 {/* {this.state.inputCost} */}
                 {/* {this.state.inputName} */}
                 {list}
