@@ -1,4 +1,4 @@
-#expense-tracker
+# expense-tracker
 
 A basic expense tracker that lets you input expenses, tag them by date and category, then view how much you've spent over a period of time or in a particular category.
 
